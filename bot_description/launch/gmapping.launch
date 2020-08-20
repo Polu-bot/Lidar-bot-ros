@@ -1,18 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <launch>
-
-  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find bot_description)/urdf/bot.xacro'"/>
-
-  <!-- send fake joint values -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-    <param name="use_gui" value="False"/>
-  </node>
-
-  <!-- Combine joint values -->
-  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
-	
-  </node>
- <arg name="scan_topic"  default="/bot/laser/scan" />
+  
+  <arg name="scan_topic"  default="/bot/laser/scan" />
   <arg name="base_frame"  default="link_chassis"/>
   <arg name="odom_frame"  default="odom"/>
 
@@ -59,7 +47,4 @@
     <param name="lasamplestep" value="0.005"/>
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>
-  <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz" />
-
 </launch>
